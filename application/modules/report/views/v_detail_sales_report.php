@@ -119,10 +119,12 @@ $this->load->view('template/js');
     $(document).ready(function() {
         $('#GenerateButton').click(function(e) {
             e.preventDefault();
+            $('#GenerateButton').attr('disabled', true)
             get_report();
         });
 
         $('#PrintButton').click(function(e) {
+            e.preventDefault()
             get_print();
         });
 
@@ -232,6 +234,10 @@ $this->load->view('template/js');
                 }
             });
         }
+
+        setTimeout(() => {
+            $('#GenerateButton').attr('disabled', false)
+        }, 1000)
     }
 
     function get_print() {

@@ -51,7 +51,7 @@ class Model_detail_sales_report extends CI_Model
             . "LEFT JOIN tblitem c ON b.item_id = c.item_id "
             . "LEFT JOIN tbluser d ON a.creator_id = d.user_id "
             . "LEFT JOIN tblbranch e ON a.branch_id = e.branch_id "
-            . "WHERE a.created_date>='$startperiod' AND DATE_FORMAT(a.created_date,'%Y-%m-%d')<='$endperiod' " . $whereall
+            . "WHERE DATE(a.created_date) >='$startperiod' AND DATE(a.created_date) <= '$endperiod' " . $whereall
             . "ORDER BY a.sales_number, b.sales_det_id";
         $data = $this->db->query($query);
         return $data->result_array();

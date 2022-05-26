@@ -33,13 +33,13 @@ class Detail_sales_report extends MX_Controller
 
     public function get_report()
     {
-        $startperiod   = $this->input->post('startperiod');
+        $startperiod = $this->input->post('startperiod');
         $endperiod   = $this->input->post('endperiod');
-        $userid   = $this->input->post('userid');
-        $branchid   = $this->input->post('branchid');
+        $userid      = $this->input->post('userid');
+        $branchid    = $this->input->post('branchid');
 
         $dtstartperiod = date('Y-m-d', strtotime($startperiod));
-        $dtendperiod = date('Y-m-d', strtotime($endperiod));
+        $dtendperiod   = date('Y-m-d', strtotime($endperiod));
 
         $result = $this->model_detail_sales_report->get_report_array($dtstartperiod, $dtendperiod, $userid, $branchid);
         echo json_encode($result);
