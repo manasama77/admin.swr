@@ -1,0 +1,12 @@
+.unsplash-bg-main {
+  background-image: url("../../assets/images/olia-gozha-J4kK8b9Fgj8-unsplash.jpg") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.unsplash-bg-random {
+  background-image: url("https://source.unsplash.com/random/1024x768/?cashier") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
