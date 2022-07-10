@@ -44,7 +44,7 @@ $this->load->view('template/sidebar');
                                 <td><?php echo $row->branch_name; ?></td>
                                 <td><?php echo $row->supplier_name; ?></td>
                                 <td><?php echo $row->doc_number; ?></td>
-                                <td><?php echo date('d M Y', strtotime($row->stock_date)); ?></td>
+                                <td><?php echo date('Y-m-d', strtotime($row->stock_date)); ?></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <button class="btn btn-sm btn-success bold" onclick="view_data(<?php echo $row->stock_in_id; ?>)"><i class="fa fa-file-text-o"></i></button>
@@ -244,6 +244,10 @@ $this->load->view('template/js');
             [10, 25, 50, -1],
             ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
+        columnDefs: [{
+            targets: [4],
+            orderable: false
+        }],
         buttons: [
             'pageLength',
             {

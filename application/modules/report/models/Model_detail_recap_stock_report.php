@@ -36,7 +36,6 @@ class Model_detail_recap_stock_report extends CI_Model
 
     function get_report_array($startperiod, $endperiod, $branchid, $itemid)
     {
-
         $where = "";
         if ($itemid > 0) {
             $where = " WHERE a.item_id = '$itemid'";

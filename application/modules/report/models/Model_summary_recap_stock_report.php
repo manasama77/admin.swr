@@ -103,7 +103,6 @@ class Model_summary_recap_stock_report extends CI_Model
             . $whereall
             . "ORDER BY a.stock_category_name, a.item_code, a.branch_name";
         $data = $this->db->query($query);
-        echo $this->db->last_query();
         return $data->result_array();
     }
 
