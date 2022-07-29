@@ -76,9 +76,9 @@
                     <td style="text-align:center;">' . $row->cashier_name . '</td>
                     <td style="text-align:center;">' . $row->sales_number . '</td>
                     <td style="text-align:center;">' . $row->sales_date . '</td>
-                    <td style="text-align:right;">' . $row->total_price . '</td>
-                    <td style="text-align:right;">' . $row->total_disc . '</td>
-                    <td style="text-align:right;">' . $row->total_transaction . '</td>
+                    <td style="text-align:right;">' . number_format($row->total_price, 0) . '</td>
+                    <td style="text-align:right;">' . number_format($row->total_disc, 0) . '</td>
+                    <td style="text-align:right;">' . number_format($row->total_transaction, 0) . '</td>
                 </tr>';
 
         $all_price = $all_price + $row->total_price;
@@ -95,16 +95,16 @@
 
     $table .= '<tr>
                             <td colspan="4" style="text-align:right;"><strong>Total ' . $branchold . ' : </strong></td>
-                            <td style="text-align:right;"><strong>' . $all_price . '</strong></td>
-                            <td style="text-align:right;"><strong>' . $all_disc . '</strong></td>
-                            <td style="text-align:right;"><strong>' . $all_trans . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($all_price, 0) . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($all_disc, 0) . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($all_trans, 0) . '</strong></td>
                         </tr>';
 
     $table .= '<tr>
                             <td colspan="4" style="text-align:right;"><strong>Grand Total : </strong></td>
-                            <td style="text-align:right;"><strong>' . $grand_price . '</strong></td>
-                            <td style="text-align:right;"><strong>' . $grand_disc . '</strong></td>
-                            <td style="text-align:right;"><strong>' . $grand_trans . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($grand_price, 0) . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($grand_disc, 0) . '</strong></td>
+                            <td style="text-align:right;"><strong>' . number_format($grand_trans, 0) . '</strong></td>
                         </tr>
                     </tbody>
                 </table>';
