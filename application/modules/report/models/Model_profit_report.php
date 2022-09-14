@@ -107,6 +107,11 @@ class Model_profit_report extends CI_Model
     */
     public function get_report_adam($from, $to, $branch_id, $item_id)
     {
+        $where = "";
+        if ($item_id) {
+            $where .= " AND tblitem.item_id = '" . $item_id . "' ";
+        }
+
         $sql = "
         SELECT
             tblbranch.branch_code,
@@ -125,6 +130,7 @@ class Model_profit_report extends CI_Model
                 WHERE
                     tblitem_price.item_id = tblsales_det.item_id 
                     AND tblitem_price.start_period <= date( tblsales_det.created_date ) 
+                    ORDER BY tblitem_price.start_period DESC
                     LIMIT 1 
                 ) * tblsales_det.qty 
             ) AS tot_hpp,
@@ -139,6 +145,7 @@ class Model_profit_report extends CI_Model
                     WHERE
                         tblitem_price.item_id = tblsales_det.item_id 
                         AND tblitem_price.start_period <= date( tblsales_det.created_date ) 
+                        ORDER BY tblitem_price.start_period DESC
                         LIMIT 1 
                     ) * tblsales_det.qty 
                 ) 
@@ -153,6 +160,7 @@ class Model_profit_report extends CI_Model
         WHERE
             DATE( tblsales.created_date ) BETWEEN '$from' 
             AND '$to' 
+            $where
         ORDER BY
             tblsales.sales_number ASC
         ";
