@@ -25,6 +25,7 @@ class Model_stock_item extends CI_Model
         a.created_date, 
         a.modificator_id, 
         a.modified_date,
+        a.expired,
         c.stock_category_id,
         c.stock_category_code,
         c.stock_category_name,
@@ -88,7 +89,7 @@ class Model_stock_item extends CI_Model
         return $query->row();
     }
 
-    public function save_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $maximumstock, $fotofilename, $fotopreview, $creatorid, $merk_id, $keterangan)
+    public function save_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $expired, $maximumstock, $fotofilename, $fotopreview, $creatorid, $merk_id, $keterangan)
     {
         $query = $this->db->query("
         insert into tblitem 
@@ -105,7 +106,8 @@ class Model_stock_item extends CI_Model
             merk_id,
             keterangan,
             creator_id,
-            created_date
+            created_date,
+            expired
         ) 
         values
         (
@@ -121,7 +123,8 @@ class Model_stock_item extends CI_Model
             '$merk_id',
             '$keterangan', 
             '$creatorid',
-            NOW()
+            NOW(),
+            '$expired'
         )");
         if ($query) {
             return true;
@@ -130,9 +133,9 @@ class Model_stock_item extends CI_Model
         }
     }
 
-    public function edit_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $maximumstock, $fotofilename, $fotopreview, $merk_id, $keterangan, $modificatorid, $id)
+    public function edit_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $expired, $maximumstock, $fotofilename, $fotopreview, $merk_id, $keterangan, $modificatorid, $id)
     {
-        $query = $this->db->query("update tblitem set stock_category_id = '$stockcategoryid',unit_id = '$unitid',item_code = '$itemcode',item_name = '$itemname',barcode = '$barcode', minimum_stock = '$minimumstock',maximum_stock = '$maximumstock', foto_filename='$fotofilename', foto_preview='$fotopreview', modificator_id='$modificatorid',modified_date = NOW(), merk_id = '$merk_id', keterangan = '$keterangan' where item_id = '$id'");
+        $query = $this->db->query("update tblitem set expired = '$expired', stock_category_id = '$stockcategoryid',unit_id = '$unitid',item_code = '$itemcode',item_name = '$itemname',barcode = '$barcode', minimum_stock = '$minimumstock',maximum_stock = '$maximumstock', foto_filename='$fotofilename', foto_preview='$fotopreview', modificator_id='$modificatorid',modified_date = NOW(), merk_id = '$merk_id', keterangan = '$keterangan' where item_id = '$id'");
         if ($query) {
             return true;
         } else {
