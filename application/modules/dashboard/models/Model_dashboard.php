@@ -75,7 +75,7 @@ class Model_dashboard extends CI_Model
 
   public function top15()
   {
-    $sql = "SELECT tblitem.item_name, tblsales_det.qty FROM `tblsales_det` left join tblitem on tblitem.item_id = tblsales_det.item_id group by tblsales_det.item_id order by qty desc limit 15";
+    $sql = "SELECT tblsales_det.item_id, tblitem.item_name, tblsales_det.qty FROM `tblsales_det` left join tblitem on tblitem.item_id = tblsales_det.item_id group by tblsales_det.item_id, tblitem.item_name, tblsales_det.qty order by qty desc limit 15";
     return $this->db->query($sql);
   }
 
@@ -92,7 +92,7 @@ class Model_dashboard extends CI_Model
       LEFT JOIN tblstock_category ON tblstock_category.stock_category_id = tblitem.stock_category_id 
     WHERE
       tblitem.expired is not null
-      and tblitem.expired != '0000-00-00'
+      and tblitem.expired != 0000-00-00
       and tblitem.expired < NOW()
       and tblitem.expired < DATE_ADD(NOW(), INTERVAL -3 MONTH)
     ";
