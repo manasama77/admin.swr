@@ -5,7 +5,7 @@
     <strong><?php echo $this->session->userdata('branchname') ?></strong>
   </div>
   <!-- Default to the left -->
-  <strong>Copyright &copy; 2019.</strong> All rights reserved.
+  <strong>Copyright &copy; 2023.</strong>Powered by Trijaya Solution. All rights reserved.
 </footer>
 
 </div>

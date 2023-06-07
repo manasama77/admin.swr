@@ -21,7 +21,7 @@ class Model_check_price extends CI_Model {
         $is_exist1 = $data_exist1['is_exist'];
 
         if($is_exist1 > 0){
-            $query = $this->db->query("SELECT start_period, selling_price FROM tblitem_price WHERE item_id = '$itemid' AND start_period<=DATE_FORMAT(NOW(),'%Y-%m-%d') ORDER BY start_period desc LIMIT 1");
+            $query = $this->db->query("SELECT start_period, selling_price FROM tblitem_price WHERE item_id = '$itemid' AND start_period<=DATE_FORMAT(NOW(),'%Y-%m-%d') ORDER BY start_period desc, item_price_id desc LIMIT 1");
         }
         else{
             $query = $this->db->query("SELECT '' as start_period, 0 as selling_price ");

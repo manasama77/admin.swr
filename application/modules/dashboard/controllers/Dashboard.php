@@ -42,6 +42,10 @@ class Dashboard extends MX_Controller
 			$data['stock_kosong']  = $this->model_dashboard->get_stock_kosong();
 			$data['stock_minimum'] = $this->model_dashboard->get_stock_minimum();
 			$data['top15s'] = $this->model_dashboard->top15();
+<<<<<<< HEAD
+=======
+			$data['stock_expired'] = $this->model_dashboard->get_stock_expired();
+>>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 
 			$this->load->view('v_dashboard', $data);
 		} else {

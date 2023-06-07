@@ -84,4 +84,4 @@ defined('EXIT_DATABASE')       or define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      or define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      or define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-define('URL_KASIR', 'http://localhost/kasir.pos_muezza/');
+define('URL_KASIR', 'https://kasirswr.trijayasolution.co.id/');

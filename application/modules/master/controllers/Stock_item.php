@@ -128,7 +128,11 @@ class Stock_item extends MX_Controller
 			$merk_id         = $this->input->post('merk_id');
 			$keterangan      = $this->input->post('keterangan');
 			$minimumstock    = $this->input->post('minimum_stock');
+<<<<<<< HEAD
 			$expired   = $this->input->post('expired');
+=======
+			$expired    = $this->input->post('expired');
+>>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 			$maximumstock    = 0;
 			$modificatorid   = $this->session->userdata('userid');
 

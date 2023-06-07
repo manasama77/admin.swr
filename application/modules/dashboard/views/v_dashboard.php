@@ -40,6 +40,7 @@
 			</div>
 		</div>
 		<div class="row">
+<<<<<<< HEAD
 		    <div class="col-sm-12 col-md-4">
 	            <div class="box box-solid">
         	        <div class="box-header with-border bg-success text-center">
@@ -68,6 +69,36 @@
         	    </div>
 	        </div>
 			<div class="col-sm-12 col-md-4">
+=======
+			<div class="col-sm-12 col-md-3">
+				<div class="box box-solid">
+					<div class="box-header with-border bg-success text-center">
+						<h4 class="box-title"><strong>Top 15</strong></h4>
+					</div>
+					<div class="box-body">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Item</th>
+										<th>Qty</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach ($top15s->result() as $top15) { ?>
+										<tr>
+											<td><?= $top15->item_name; ?></td>
+											<td><?= $top15->qty; ?></td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3">
+>>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 				<div class="box box-solid">
 					<div class="box-header with-border bg-danger text-center">
 						<h4 class="box-title"><strong>Stock Kosong</strong></h4>
@@ -104,7 +135,11 @@
 					</div>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class="col-sm-12 col-md-4">
+=======
+			<div class="col-sm-12 col-md-3">
+>>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 				<div class="box box-solid">
 					<div class="box-header with-border bg-warning text-center">
 						<h4 class="box-title"><strong>Stock Minimum</strong></h4>
@@ -132,6 +167,45 @@
 												<td><?= $key->stock_category_name; ?></td>
 												<td><?= $key->item_name; ?></td>
 												<td class="text-right"><?= $key->qty; ?></td>
+											</tr>
+									<?php
+										}
+									}
+									?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<div class="box box-solid">
+					<div class="box-header with-border bg-info text-center">
+						<h4 class="box-title"><strong>Expired</strong></h4>
+					</div>
+					<div class="box-body">
+						<div class="table-responsive">
+							<table class="table table-bordered table-striped bg-warning">
+								<thead>
+									<tr>
+										<!-- <th>Kategori Barang</th> -->
+										<th>Nama Barang</th>
+										<th class="text-right">Expired</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if ($stock_expired->num_rows() == 0) { ?>
+										<tr>
+											<td colspan="3" class="text-center">Tidak ada Data</td>
+										</tr>
+										<?php
+									} else {
+										foreach ($stock_expired->result() as $key) {
+										?>
+											<tr>
+												<!-- <td><?= $key->stock_category_name; ?></td> -->
+												<td><?= $key->item_name; ?></td>
+												<td class="text-right"><?= $key->expired; ?></td>
 											</tr>
 									<?php
 										}

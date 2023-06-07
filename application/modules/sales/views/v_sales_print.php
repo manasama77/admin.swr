@@ -7,8 +7,8 @@
 </head>
 
 <body onload="window.print();">
-	<div style="font-size:6px; font-family:'Verdana'; width:50mm;">
-		<label style="font-size:8px; display:block; width:x; height:y; text-align:center;"><strong><?php echo $header->branch_name; ?></strong></label>
+	<div style="font-size:9px; font-family:'Consolas'; width:50mm;">
+		<label style="font-size:11px; display:block; width:x; height:y; text-align:center;"><strong><?php echo $header->branch_name; ?></strong></label>
 		<p style="text-align:center;"><strong><?php echo $header->branch_address; ?></strong></p>
 		<br>
 		<br>
