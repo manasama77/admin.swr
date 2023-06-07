@@ -49,7 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link	https://codeigniter.com/user_guide/libraries/sessions.html
  */
 interface SessionHandlerInterface {
-
 	public function open($save_path, $name);
 	public function close();
 	public function read($session_id);

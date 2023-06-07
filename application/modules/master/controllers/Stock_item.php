@@ -77,6 +77,7 @@ class Stock_item extends MX_Controller
 			$merk_id         = $this->input->post('merk_id');
 			$keterangan      = $this->input->post('keterangan');
 			$minimum_stock   = $this->input->post('minimum_stock');
+			$expired   = $this->input->post('expired');
 			$maximumstock    = 0;
 			$creatorid       = $this->session->userdata('userid');
 
@@ -102,7 +103,7 @@ class Stock_item extends MX_Controller
 				$fotopreview = $strfotopreview;
 			}
 
-			$insert = $this->model_stock_item->save_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimum_stock, $maximumstock, $fotofilename, $fotopreview, $creatorid, $merk_id, $keterangan);
+			$insert = $this->model_stock_item->save_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimum_stock, $expired, $maximumstock, $fotofilename, $fotopreview, $creatorid, $merk_id, $keterangan);
 			if ($insert) {
 				echo json_encode(array('status' => TRUE, 'message' => 'Berhasil Tambah Data'));
 			} else {
@@ -127,6 +128,7 @@ class Stock_item extends MX_Controller
 			$merk_id         = $this->input->post('merk_id');
 			$keterangan      = $this->input->post('keterangan');
 			$minimumstock    = $this->input->post('minimum_stock');
+			$expired   = $this->input->post('expired');
 			$maximumstock    = 0;
 			$modificatorid   = $this->session->userdata('userid');
 
@@ -160,7 +162,7 @@ class Stock_item extends MX_Controller
 				$fotopreview = $strfotopreview;
 			}
 
-			$insert = $this->model_stock_item->edit_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $maximumstock, $fotofilename, $fotopreview, $merk_id, $keterangan, $modificatorid, $id);
+			$insert = $this->model_stock_item->edit_data($stockcategoryid, $unitid, $itemcode, $itemname, $barcode, $minimumstock, $expired, $maximumstock, $fotofilename, $fotopreview, $merk_id, $keterangan, $modificatorid, $id);
 			if ($insert) {
 				echo json_encode(array('status' => TRUE, 'message' => 'Berhasil Ubah Data'));
 			} else {

@@ -72,4 +72,10 @@ class Model_dashboard extends CI_Model
     $exec = $this->db->query($sql);
     return $exec;
   }
+  
+  public function top15()
+  {
+      $sql = "SELECT tblitem.item_name, tblsales_det.qty FROM `tblsales_det` left join tblitem on tblitem.item_id = tblsales_det.item_id group by tblsales_det.item_id order by qty desc limit 15";
+      return $this->db->query($sql);
+  }
 }

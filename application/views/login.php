@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>POS Apps</title>
-  <link rel="icon" href="<?php echo base_url(); ?>assets/img/logo swr frozen food.jpeg" type="image/png">
+  <link rel="icon" href="<?php echo base_url(); ?>assets/img/Wishyink.jpg" type="image/png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -29,9 +29,9 @@
 
     <div class="login-box-body">
       <div class="login-logo">
-        <img src="<?php echo base_url(); ?>assets/img/logo swr frozen food.jpeg" height="200" width="250">
+        <img src="<?php echo base_url(); ?>assets/img/Wishyink.jpg" height="200" width="250">
         <br>
-        <span style="color:#000;"><strong>SWR</strong>FrozenFood</span>
+        <span style="color:#000;"><strong>Login Aplikasi</strong></span>
       </div>
 
       <?php if ($this->session->flashdata('flash_login') != '') { ?>

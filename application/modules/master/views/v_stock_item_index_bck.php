@@ -37,7 +37,6 @@ $this->load->view('template/sidebar');
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Minimum</th>
-                            <th>Expired</th>
                             <th>Keterangan</th>
                             <th>Action</th>
                         </tr>
@@ -51,7 +50,6 @@ $this->load->view('template/sidebar');
                                 <td><?php echo $row->item_code; ?></td>
                                 <td><?php echo $row->item_name; ?></td>
                                 <td><?php echo $row->minimum_stock; ?></td>
-                                <td><?php echo $row->expired; ?></td>
                                 <td><?php echo $row->keterangan; ?></td>
                                 <td>
                                     <div class="btn-group">
@@ -133,12 +131,6 @@ $this->load->view('template/sidebar');
                             <label class="col-sm-4 control-label">Minimum Stock <span class="text-danger">*</span></label>
                             <div class="col-sm-6">
                                 <input type="number" class="form-control" id="minimum_stock" name="minimum_stock" min="0" required />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label" for="expired">Expired</label>
-                            <div class="col-sm-6">
-                                <input type="date" class="form-control" id="expired" name="expired" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -535,7 +527,6 @@ $this->load->view('template/js');
                 $('#itemname').val(data.item_name);
                 $('#merk_id').val(data.merk_id).trigger('change')
                 $('#minimum_stock').val(data.minimum_stock)
-                $('#expired').val(data.expired)
                 $('#keterangan').val(data.keterangan)
                 //$('#barcode').val(data.barcode);
                 //$('#minimumstock').val(data.minimum_stock);
