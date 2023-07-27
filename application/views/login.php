@@ -5,11 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>POS Apps</title>
-<<<<<<< HEAD
   <link rel="icon" href="<?php echo base_url(); ?>assets/img/Wishyink.jpg" type="image/png">
-=======
-  <link rel="icon" href="<?php echo base_url(); ?>assets/img/toko_trijaya.jpg" type="image/png">
->>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -33,11 +29,7 @@
 
     <div class="login-box-body">
       <div class="login-logo">
-<<<<<<< HEAD
         <img src="<?php echo base_url(); ?>assets/img/Wishyink.jpg" height="200" width="250">
-=======
-        <img src="<?php echo base_url(); ?>assets/img/toko_trijaya.jpg" height="200" width="250">
->>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
         <br>
         <span style="color:#000;"><strong>Login Aplikasi</strong></span>
       </div>

@@ -40,36 +40,6 @@
 			</div>
 		</div>
 		<div class="row">
-<<<<<<< HEAD
-		    <div class="col-sm-12 col-md-4">
-	            <div class="box box-solid">
-        	        <div class="box-header with-border bg-success text-center">
-        	            <h4 class="box-title"><strong>Top 15</strong></h4>
-        	        </div>
-        	        <div class="box-body">
-        	            <div class="table-responsive">
-                	        <table class="table table-bordered">
-                	            <thead>
-                	                <tr>
-                	                    <th>Item</th>
-                	                    <th>Qty</th>
-                	                </tr>
-                	            </thead>
-                	            <tbody>
-                	                <?php foreach($top15s->result() as $top15){ ?>
-                	                <tr>
-                	                    <td><?=$top15->item_name;?></td>
-                	                    <td><?=$top15->qty;?></td>
-                	                </tr>
-                	                <?php } ?>
-                	            </tbody>
-                	        </table>
-                	    </div>
-        	        </div>
-        	    </div>
-	        </div>
-			<div class="col-sm-12 col-md-4">
-=======
 			<div class="col-sm-12 col-md-3">
 				<div class="box box-solid">
 					<div class="box-header with-border bg-success text-center">
@@ -98,7 +68,6 @@
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-3">
->>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 				<div class="box box-solid">
 					<div class="box-header with-border bg-danger text-center">
 						<h4 class="box-title"><strong>Stock Kosong</strong></h4>
@@ -135,11 +104,7 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
-			<div class="col-sm-12 col-md-4">
-=======
 			<div class="col-sm-12 col-md-3">
->>>>>>> 72f9862b2ee952fc58799294e740c2ccba3edf7e
 				<div class="box box-solid">
 					<div class="box-header with-border bg-warning text-center">
 						<h4 class="box-title"><strong>Stock Minimum</strong></h4>
