@@ -36,6 +36,8 @@ $this->load->view('template/sidebar');
                             <th>Harga Beli</th>
                             <th>Harga Jual</th>
                             <th>Keuntungan</th>
+                            <th>Harga Grosir</th>
+                            <th>Minimal Pembelian</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -48,66 +50,104 @@ $this->load->view('template/sidebar');
         </div>
     </section>
 
-    <div class="modal fade bd-example-modal-lg" id="FormModal">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" style="text-align:center;"><strong>Role Form</strong></h4>
-                </div>
-                <form action="#" id="form" class="form-horizontal">
+    <form action="#" id="form" class="form-horizontal">
+        <div class="modal fade bd-example-modal-lg" id="FormModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align:center;"><strong>Role Form</strong></h4>
+                    </div>
                     <div class="modal-body">
                         <input type="hidden" class="form-control" id="formtype" name="formtype" value="">
                         <input type="hidden" class="form-control" id="priceid" name="priceid" value="0">
 
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">Cabang</label>
-                            <div class="col-sm-6">
-                                <select class="form-control select2" id="branchid" name="branchid" style="width: 100%;">
+                            <label for="branchid" class="col-sm-3 control-label">
+                                Cabang<span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2" id="branchid" name="branchid" style="width: 100%;" required>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="itemid" class="col-sm-3 control-label">
+                                Jenis Barang<span class="text-danger">*</span>
+                            </label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2" id="itemid" name="itemid" style="width: 100%;" required>
                                     <option value='0' selected>Silahkan Pilih</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Jenis Barang</label>
+
+                        <div class="row">
                             <div class="col-sm-6">
-                                <select class="form-control select2" id="itemid" name="itemid" style="width: 100%;">
-                                    <option value='0' selected>Silahkan Pilih</option>
-                                </select>
+                                <div class="form-group">
+                                    <label for="startperiod" class="col-sm-6 control-label">Mulai Berlaku<span class="text-danger">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="date" class="form-control pull-right" id="startperiod" name="startperiod" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="buyingprice" class="col-sm-4 control-label">Harga Beli Barang<span class="text-danger">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="buyingprice" name="buyingprice" value="0" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Mulai Berlaku</label>
+
+                        <div class="row">
                             <div class="col-sm-6">
-                                <input type="date" class="form-control pull-right" id="startperiod" name="startperiod" required>
+                                <div class="form-group">
+                                    <label for="startperiod" class="col-sm-6 control-label">Harga Jual<span class="text-danger">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="sellingprice" name="sellingprice" value="0" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Keuntungan</label>
+                                    <div class="col-sm-6">
+                                        <h5 style="font-weight: bold; text-align: left;" id="v_keuntungan">0 (0%)</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Harga Beli Barang</label>
+
+                        <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="buyingprice" name="buyingprice" value="0" required>
+                                <div class="form-group">
+                                    <label for="harga_grosir" class="col-sm-6 control-label">Harga Grosir</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="harga_grosir" name="harga_grosir" value="0" min="0">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Harga Jual</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="sellingprice" name="sellingprice" value="0" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Keuntungan</label>
-                            <div class="col-sm-6">
-                                <h5 style="font-weight: bold; text-align: left;" id="v_keuntungan">0 (0%)</h5>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Minimal Pembelian</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="minimal_pembelian" name="minimal_pembelian" value="0" min="0">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success pull-left" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-secondary pull-left" data-dismiss="modal">Batal</button>
                         <button type="button" id="btnSave" onclick="save_data()" class="btn btn-danger pull-right">Simpan</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <div class="modal fade" id="ImportModal">
         <div class="modal-dialog">
@@ -205,6 +245,9 @@ $this->load->view('template/js');
     $("#PriceTable").DataTable({
         "processing": true,
         "serverSide": true,
+        "order": [
+            [1, "desc"]
+        ],
         "pagingType": "full_numbers",
         "ajax": {
             "url": "<?php echo site_url() ?>master/price/get_all_price",
@@ -254,6 +297,12 @@ $this->load->view('template/js');
             },
             {
                 "data": "profit",
+            },
+            {
+                "data": "harga_grosir",
+            },
+            {
+                "data": "minimal_pembelian",
             },
             {
                 "data": "action"
@@ -432,7 +481,11 @@ $this->load->view('template/js');
         $('#sellingprice').attr('disabled', false); //set button disable 
 
         $('#FormModal').modal('show'); // show bootstrap modal
-        $('.modal-title').text('Tambah Data Harga Barang'); // Set Title to Bootstrap modal title
+
+        $('#FormModal').on('shown.bs.modal', function() {
+            $('#branchid').focus()
+            $('.modal-title').text('Tambah Data Harga Barang'); // Set Title to Bootstrap modal title
+        })
     }
 
     function view_data(itemid) {

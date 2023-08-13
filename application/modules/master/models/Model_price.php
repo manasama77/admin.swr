@@ -37,12 +37,17 @@ class Model_price extends CI_Model
     public function get_all($limit, $start, $search)
     {
         $sql = "SELECT *, case when a.branch_id > 0 then c.branch_name else 'Semua Cabang' end as branch_name 
-                FROM tblitem_price a INNER JOIN tblitem b ON a.item_id = b.item_id LEFT JOIN tblbranch c ON a.branch_id=c.branch_id ";
+                FROM tblitem_price a LEFT JOIN tblitem b ON a.item_id = b.item_id LEFT JOIN tblbranch c ON a.branch_id=c.branch_id ";
+
+        // echo '<pre>' . print_r($sql, 1) . '</pre>';
+        // exit;
 
         $search = trim($search);
         if (strlen($search) > 0) {
             $sql = $sql . "WHERE b.item_name like '%$search%' ";
         }
+
+        $sql .= " order by a.`start_period` desc ";
 
         if ($limit != -1) {
             $sql = $sql . "LIMIT $limit OFFSET $start ";
@@ -88,10 +93,10 @@ class Model_price extends CI_Model
         return $query;
     }
 
-    public function save_data($branchid, $itemid, $dtstartperiod, $buyingprice, $sellingprice, $creatorid)
+    public function save_data($branchid, $itemid, $dtstartperiod, $buyingprice, $sellingprice, $harga_grosir, $minimal_pembelian, $creatorid)
     {
-        $query = $this->db->query("insert into tblitem_price (branch_id,item_id,start_period,buying_price,selling_price,creator_id,created_date) 
-        values('$branchid','$itemid','$dtstartperiod','$buyingprice','$sellingprice','$creatorid',NOW())");
+        $query = $this->db->query("insert into tblitem_price (branch_id, item_id, start_period, buying_price, selling_price, harga_grosir, minimal_pembelian, creator_id,created_date) 
+        values('$branchid','$itemid','$dtstartperiod','$buyingprice','$sellingprice', '$harga_grosir', '$minimal_pembelian', '$creatorid',NOW())");
         if ($query) {
             return true;
         } else {

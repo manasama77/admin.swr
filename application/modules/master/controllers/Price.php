@@ -50,19 +50,24 @@ class Price extends MX_Controller
                 $persen_keuntungan = number_format((($keuntungan / $row['buying_price']) * 100), 0);
             }
             // $profit = $row['selling_price'] - $row['buying_price'] . " <small>(" . ($row['buying_price'] == 0) ? 0 : (($row['selling_price'] - $row['buying_price']) / $row['buying_price']  * 100) . "%)</small>";
-            $profit = $keuntungan . " <small>(" . $persen_keuntungan . "%)</small>";
+            $profit = number_format($keuntungan, 0) . " <small>(" . $persen_keuntungan . "%)</small>";
 
             // $action = '<button class="btn btn-sm btn-success bold" onclick="view_data(' . $row['item_price_id'] . ')"><i class="fa fa-file-text-o"></i></button>&nbsp;<button class="btn btn-sm btn-warning bold" onclick="edit_data(' . $row['item_price_id'] . ')"><i class="fa fa-pencil"></i></button>&nbsp<button class="btn btn-sm btn-danger bold" onclick="delete_data(' . $row['item_price_id'] . ')"><i class="fa fa-ban"></i></button>';
+
+            $harga_grosir      = number_format($row['harga_grosir']);
+            $minimal_pembelian = $row['minimal_pembelian'];
 
             $action = '<button class="btn btn-sm btn-success bold" onclick="view_data(' . $row['item_price_id'] . ')"><i class="fa fa-file-text-o"></i></button>';
 
             $nested = [
-                'item_name'     => $row['item_name'],
-                'period'        => date('d M Y', strtotime($row['start_period'])),
-                'buying_price'  => $row['buying_price'],
-                'selling_price' => $row['selling_price'],
-                'profit'        => $profit,
-                'action'        => $action,
+                'item_name'         => $row['item_name'],
+                'period'            => date('d M Y', strtotime($row['start_period'])),
+                'buying_price'      => $row['buying_price'],
+                'selling_price'     => $row['selling_price'],
+                'profit'            => $profit,
+                'harga_grosir'      => $harga_grosir,
+                'minimal_pembelian' => $minimal_pembelian,
+                'action'            => $action,
             ];
             // $sub_array[]          = $row['item_name'];
             // $sub_array[]          = date('d M Y', strtotime($row['start_period']));
@@ -130,16 +135,18 @@ class Price extends MX_Controller
     {
         if ($this->session->userdata('userid') != '') {
 
-            $branchid     = $this->input->post('branchid');
-            $itemid       = $this->input->post('itemid');
-            $startperiod  = $this->input->post('startperiod');
-            $buyingprice  = $this->input->post('buyingprice');
-            $sellingprice = $this->input->post('sellingprice');
-            $creatorid    = $this->session->userdata('userid');
+            $branchid          = $this->input->post('branchid');
+            $itemid            = $this->input->post('itemid');
+            $startperiod       = $this->input->post('startperiod');
+            $buyingprice       = $this->input->post('buyingprice');
+            $sellingprice      = $this->input->post('sellingprice');
+            $harga_grosir      = $this->input->post('harga_grosir');
+            $minimal_pembelian = $this->input->post('minimal_pembelian');
+            $creatorid         = $this->session->userdata('userid');
 
             $dtstartperiod = date('Y-m-d', strtotime($startperiod));
 
-            $insert = $this->model_price->save_data($branchid, $itemid, $dtstartperiod, $buyingprice, $sellingprice, $creatorid);
+            $insert = $this->model_price->save_data($branchid, $itemid, $dtstartperiod, $buyingprice, $sellingprice, $harga_grosir, $minimal_pembelian, $creatorid);
             if ($insert) {
                 echo json_encode(array('status' => TRUE, 'message' => 'Berhasil Tambah Data'));
             } else {
